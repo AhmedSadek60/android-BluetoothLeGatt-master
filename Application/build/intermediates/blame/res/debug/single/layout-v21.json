@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\ahmed\\.android\\build-cache\\86fbd934c4a64d30acea66b82b65d96b39d80817\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\ahmed\\.android\\build-cache\\86fbd934c4a64d30acea66b82b65d96b39d80817\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\ahmed\\.android\\build-cache\\86fbd934c4a64d30acea66b82b65d96b39d80817\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\ahmed\\.android\\build-cache\\86fbd934c4a64d30acea66b82b65d96b39d80817\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    }
+]
