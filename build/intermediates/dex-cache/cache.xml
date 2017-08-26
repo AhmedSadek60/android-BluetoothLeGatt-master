@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="55d2f731fc29a77220f9d7be80fd784f68b0cac2">
+        sha1="4b4a83191b82a1b52f332cb66da001bcdcecf328">
         <dex dex="E:\android-BluetoothLeGatt-master\Application\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_096d9b283440addf9a6bee0e2f793725f9061f8c\classes.dex" />
     </item>
     <item
@@ -99,6 +99,15 @@
         revision="25.0.3"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
         <dex dex="E:\android-BluetoothLeGatt-master\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0a54ea466ec050d1e3b5988dd6058d63b99764a4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ahmed\.android\build-cache\0f450817a52a9092f172b57ff3ff463cd838183d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7bd8107ff8c0f54a547df282bc4257629eb35d32">
+        <dex dex="E:\android-BluetoothLeGatt-master\Application\build\intermediates\transforms\dex\debug\folders\1000\10\classes_233bfb859b99d5e5a70cdac3eee33efff66414cb\classes.dex" />
     </item>
     <item
         is-multidex="true"

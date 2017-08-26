@@ -39,6 +39,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import io.github.controlwear.virtual.joystick.android.JoystickView;
+
 /**
  * For a given BLE device, this Activity provides the user interface to connect, display data,
  * and display GATT services and characteristics supported by the device.  The Activity
@@ -50,6 +52,15 @@ public class DeviceControlActivity extends Activity {
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
+
+
+    //joystick
+    private TextView mTextViewAngleLeft;
+    private TextView mTextViewStrengthLeft;
+    private TextView mTextViewAngleRight;
+    private TextView mTextViewStrengthRight;
+
+
 
     private TextView mConnectionState;
     private TextView mDataField;
@@ -172,7 +183,36 @@ public class DeviceControlActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
+
+
+        //joystick
+        mTextViewAngleLeft = (TextView) findViewById(R.id.textView_angle_left);
+        mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
+
+        JoystickView joystickLeft = (JoystickView) findViewById(R.id.joystickView_left);
+        joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
+            @Override
+            public void onMove(int angle, int strength) {
+                mTextViewAngleLeft.setText(angle + "°");
+                mTextViewStrengthLeft.setText(strength + "%");
+            }
+        });
+
+
+        mTextViewAngleRight = (TextView) findViewById(R.id.textView_angle_right);
+        mTextViewStrengthRight = (TextView) findViewById(R.id.textView_strength_right);
+
+        JoystickView joystickRight = (JoystickView) findViewById(R.id.joystickView_right);
+        joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
+            @Override
+            public void onMove(int angle, int strength) {
+                mTextViewAngleRight.setText(angle + "°");
+                mTextViewStrengthRight.setText(strength + "%");
+            }
+        });
     }
+
 
     @Override
     protected void onResume() {

@@ -1,4 +1,4 @@
-#Fri Aug 25 20:18:05 EET 2017
+#Sat Aug 26 01:25:50 EET 2017
 base.0=E\:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_ec84648990a2d0c40c59a24f4d6f30c16880de28
 renamed.1=classes2.dex
 renamed.0=classes.dex

@@ -20,7 +20,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="18"
+        android:minSdkVersion="19"
         android:targetSdkVersion="25" />
 
     <!-- Min/target SDK versions (<uses-sdk>) managed by build.gradle -->
@@ -56,7 +56,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.android.bluetoothlegatt.DeviceControlActivity" />
+        <activity
+            android:name="com.example.android.bluetoothlegatt.DeviceControlActivity"
+            android:screenOrientation="landscape" />
 
         <service
             android:name="com.example.android.bluetoothlegatt.BluetoothLeService"

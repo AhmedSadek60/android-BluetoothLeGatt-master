@@ -1,5 +1,13 @@
 [
     {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\pink_ball.png",
+        "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-xhdpi\\pink_ball.png"
+    },
+    {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\joystick_background.png",
+        "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-xhdpi\\joystick_background.png"
+    },
+    {
         "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
         "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-xhdpi\\ic_launcher.png"
     }
