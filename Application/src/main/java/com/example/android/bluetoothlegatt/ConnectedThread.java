@@ -1,6 +1,7 @@
 package com.example.android.bluetoothlegatt;
 
 import android.bluetooth.BluetoothSocket;
+import android.os.Handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,9 @@ public class ConnectedThread extends Thread {
     private final BluetoothSocket mmSocket;
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
+
+
+    Handler mHandler = new Handler();
     public ConnectedThread(BluetoothSocket socket) {
         mmSocket = socket;
         InputStream tmpIn = null;

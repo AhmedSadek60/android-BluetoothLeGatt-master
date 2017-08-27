@@ -34,6 +34,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -196,6 +197,13 @@ public class DeviceControlActivity extends Activity {
             public void onMove(int angle, int strength) {
                 mTextViewAngleLeft.setText(angle + "°");
                 mTextViewStrengthLeft.setText(strength + "%");
+                ConnectedThread mConnectedThread = new ConnectedThread();
+
+                if(0== angle ){
+                    mConnectedThread.write("1");    // Send "1" via Bluetooth
+                    Toast.makeText(getBaseContext(), "Turns Right", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
