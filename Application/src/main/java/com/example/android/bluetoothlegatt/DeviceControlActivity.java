@@ -164,6 +164,12 @@ public class DeviceControlActivity extends Activity {
         mDataField.setText(R.string.no_data);
     }
 
+    public void doSomething(char param){
+        ConnectedThread mConnectedThread = new ConnectedThread();
+        mConnectedThread.write("1");    // Send "1" via Bluetooth
+        Toast.makeText(getBaseContext(), "Turns Right", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

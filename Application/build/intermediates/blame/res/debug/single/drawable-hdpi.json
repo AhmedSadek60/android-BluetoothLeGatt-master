@@ -4,6 +4,10 @@
         "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-hdpi\\tile.9.png"
     },
     {
+        "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\tile.png",
+        "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-hdpi\\tile.png"
+    },
+    {
         "merged": "E:\\android-BluetoothLeGatt-master\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
         "source": "E:\\android-BluetoothLeGatt-master\\Application\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     }
