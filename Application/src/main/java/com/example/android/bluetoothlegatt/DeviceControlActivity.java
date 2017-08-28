@@ -17,8 +17,11 @@
 package com.example.android.bluetoothlegatt;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -36,9 +39,11 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
@@ -51,17 +56,22 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 public class DeviceControlActivity extends Activity {
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
 
+
+    private BluetoothSocket bluetoothSocket = null;
+
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
+    private BluetoothAdapter btAdapter = null;
+    private BluetoothSocket btSocket = null;
+    private ConnectedThread mConnectedThread;
+    private static final UUID BTMODULEUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     //joystick
     private TextView mTextViewAngleLeft;
     private TextView mTextViewStrengthLeft;
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
-
-
 
     private TextView mConnectionState;
     private TextView mDataField;
@@ -89,6 +99,8 @@ public class DeviceControlActivity extends Activity {
             }
             // Automatically connects to the device upon successful start-up initialization.
             mBluetoothLeService.connect(mDeviceAddress);
+
+
         }
 
         @Override
@@ -165,7 +177,7 @@ public class DeviceControlActivity extends Activity {
     }
 
     public void doSomething(char param){
-        ConnectedThread mConnectedThread = new ConnectedThread();
+        ConnectedThread mConnectedThread = new ConnectedThread(btSocket);
         mConnectedThread.write("1");    // Send "1" via Bluetooth
         Toast.makeText(getBaseContext(), "Turns Right", Toast.LENGTH_SHORT).show();
     }
@@ -174,6 +186,8 @@ public class DeviceControlActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gatt_services_characteristics);
+
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
 
         final Intent intent = getIntent();
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
@@ -203,7 +217,6 @@ public class DeviceControlActivity extends Activity {
             public void onMove(int angle, int strength) {
                 mTextViewAngleLeft.setText(angle + "°");
                 mTextViewStrengthLeft.setText(strength + "%");
-                ConnectedThread mConnectedThread = new ConnectedThread();
 
                 if(0== angle ){
                     mConnectedThread.write("1");    // Send "1" via Bluetooth
@@ -227,6 +240,11 @@ public class DeviceControlActivity extends Activity {
         });
     }
 
+    private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
+
+        return  device.createRfcommSocketToServiceRecord(BTMODULEUUID);
+        //creates secure outgoing connecetion with BT device using UUID
+    }
 
     @Override
     protected void onResume() {
@@ -236,6 +254,32 @@ public class DeviceControlActivity extends Activity {
             final boolean result = mBluetoothLeService.connect(mDeviceAddress);
             Log.d(TAG, "Connect request result=" + result);
         }
+
+        Log.d("BTAddress2", mDeviceAddress);
+        //create device and set the MAC address
+        BluetoothDevice device = btAdapter.getRemoteDevice(mDeviceAddress);
+
+        try {
+            btSocket = createBluetoothSocket(device);
+        } catch (IOException e) {
+            Toast.makeText(this, "Socket creation failed", Toast.LENGTH_LONG).show();
+        }
+        // Establish the Bluetooth socket connection.
+        try
+        {
+            btSocket.connect();
+        } catch (IOException e) {
+            try
+            {
+                btSocket.close();
+            } catch (IOException e2)
+            {
+                //insert code to deal with this
+            }
+        }
+        mConnectedThread = new ConnectedThread(btSocket);
+        mConnectedThread.start();
+
     }
 
     @Override

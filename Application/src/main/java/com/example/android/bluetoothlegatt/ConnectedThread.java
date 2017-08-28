@@ -2,6 +2,7 @@ package com.example.android.bluetoothlegatt;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,10 +52,17 @@ public class ConnectedThread extends Thread {
             }
         }
     }
-    public void write(byte[] bytes) {
+    public void write(String input) {
+
+        byte[] msgBuffer = input.getBytes();           //converts entered String into bytes
         try {
-            mmOutStream.write(bytes);
-        } catch (IOException e) { }
+
+            mmOutStream.write(msgBuffer);                //write bytes over BT connection via outstream
+        } catch (IOException e) {
+            //if you cannot write, close the application
+
+        }
+
     }
     public void cancel() {
         try {
